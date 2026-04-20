@@ -14,7 +14,7 @@ export class Triangle implements Figure {
     public c: number,
   ) {
     if (a + b <= c || a + c <= b || b + c <= a) {
-      throw new Error('Error');
+      throw new Error('Triangle sides must be > 0');
     }
   }
 
@@ -29,14 +29,14 @@ export class Triangle implements Figure {
 }
 
 export class Circle implements Figure {
-  public shape: 'triangle' = 'circle';
+  public shape: 'circle' = 'circle';
 
   constructor(
     public color: Figure['color'],
     public radius: number,
   ) {
     if (radius <= 0) {
-      throw new Error('Error');
+      throw new Error('radius should be > 0');
     }
   }
 
@@ -48,7 +48,7 @@ export class Circle implements Figure {
 }
 
 export class Rectangle implements Figure {
-  public shape: 'triangle' = 'rectangle';
+  public shape: 'rectangle' = 'rectangle';
 
   constructor(
     public color: Figure['color'],
@@ -56,12 +56,14 @@ export class Rectangle implements Figure {
     public height: number,
   ) {
     if (width <= 0 || height <= 0) {
-      throw new Error('Error');
+      throw new Error('width and height must be > 0');
     }
   }
 
   getArea(): number {
-    return this.width * this.height;
+    const res = this.width * this.height;
+
+    return Math.floor(res * 100) / 100;
   }
 }
 
