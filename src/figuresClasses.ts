@@ -13,8 +13,12 @@ export class Triangle implements Figure {
     public b: number,
     public c: number,
   ) {
-    if (a + b <= c || a + c <= b || b + c <= a) {
+    if (a <= 0 || b <= 0 || c <= 0) {
       throw new Error('Triangle sides must be > 0');
+    }
+
+    if (a + b <= c || a + c <= b || b + c <= a) {
+      throw new Error(`sides ${a}, ${b} and ${c} can't form a triangle`);
     }
   }
 
